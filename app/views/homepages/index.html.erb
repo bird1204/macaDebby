@@ -1,3 +1,55 @@
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Bonheur</a>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <%=link_to "卡龍頭條" , root_path %>
+            </li>
+            <li>
+              <%=link_to "卡龍畫廊" , products_path %>
+            </li>
+            <li>
+              <a href="#">卡龍成員</a>
+            </li>
+            <!--
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Action</a>
+                </li>
+                <li>
+                  <a href="#">Another action</a>
+                </li>
+                <li>
+                  <a href="#">Something else here</a>
+                </li>
+                <li class="divider">
+                </li>
+                <li>
+                  <a href="#">Separated link</a>
+                </li>
+                <li class="divider">
+                </li>
+                <li>
+                  <a href="#">One more separated link</a>
+                </li>
+              </ul>
+            </li>
+          -->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#">登入</a>
+            </li>
+          </ul>         
+        </div>
+      </nav>
+
+
       <div class="jumbotron">
         <h1>
           嗨，我是卡龍。
@@ -12,37 +64,19 @@
     </div>
   </div>
   <div class="row clearfix">
+    <%@top_product.each do |product|%>
     <div class="col-md-4 column">
       <h2>
-        情人節禮盒
+        <%=product.name%>
       </h2>
       <p>
         這邊放簡介或圖，但我覺得圖會比較好，簡介可以在details看
+        <%=product.intro%>
       </p>
       <p>
-        <a class="btn" href="#">View details »</a>
+        <%=link_to "了解更多" , product_path(product.id),  :class => "btn"%>
       </p>
     </div>
-    <div class="col-md-4 column">
-      <h2>
-        心意滿分馬卡龍
-      </h2>
-      <p>
-        這邊放簡介或圖，但我覺得圖會比較好，簡介可以在details看
-      </p>
-      <p>
-        <a class="btn" href="#">View details »</a>
-      </p>
-    </div>
-    <div class="col-md-4 column">
-      <h2>
-        一次一個馬卡龍
-      </h2>
-      <p>
-        這邊放簡介或圖，但我覺得圖會比較好，簡介可以在details看
-      </p>
-      <p>
-        <a class="btn" href="#">View details »</a>
-      </p>
-    </div>
+    <%end%>
+  </div>
 

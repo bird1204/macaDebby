@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140806095210) do
+ActiveRecord::Schema.define(:version => 20140806121607) do
 
   create_table "customers", :force => true do |t|
     t.integer  "permission_id"
@@ -59,18 +59,23 @@ ActiveRecord::Schema.define(:version => 20140806095210) do
     t.string   "name"
     t.text     "url"
     t.boolean  "enabled"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "product_id"
+    t.string   "title"
+    t.text     "description"
   end
 
   create_table "products", :force => true do |t|
     t.string   "name"
+    t.string   "intro"
+    t.text     "desc"
     t.integer  "price"
     t.integer  "discount"
-    t.integer  "product_image_id"
     t.boolean  "enabled"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "is_top"
   end
 
 end

@@ -1,0 +1,145 @@
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Bonheur</a>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li >
+              <%=link_to "卡龍頭條" , root_path %>
+            </li>
+            <li class="active">
+              <%=link_to "卡龍畫廊" , products_path %>
+            </li>
+            <li>
+              <a href="#">卡龍成員</a>
+            </li>
+            <!--
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Action</a>
+                </li>
+                <li>
+                  <a href="#">Another action</a>
+                </li>
+                <li>
+                  <a href="#">Something else here</a>
+                </li>
+                <li class="divider">
+                </li>
+                <li>
+                  <a href="#">Separated link</a>
+                </li>
+                <li class="divider">
+                </li>
+                <li>
+                  <a href="#">One more separated link</a>
+                </li>
+              </ul>
+            </li>
+          -->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#">登入</a>
+            </li>
+          </ul>         
+        </div>
+      </nav>
+
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="carousel slide" id="carousel-228171">
+        <ol class="carousel-indicators">
+          <%@images.each_with_index do |image,index|%>
+            <%if index==1%>
+            <li data-slide-to="#{index}" data-target="#carousel-228171"></li>
+            <%else%>
+            <li data-slide-to="#{index}" data-target="#carousel-228171" class="active"></li>
+            <%end%>
+          <%end%>
+        </ol>
+        <div class="carousel-inner">
+          <%@images.each_with_index do |image,index|%>
+            <%if index==1%>
+            <div class="item active">
+              <%=image_tag image.url%>
+              <div class="carousel-caption">
+                <h4>
+                  <%=image.title%>
+                </h4>
+                <p>
+                  <%=image.description%>
+                </p>
+              </div>
+            </div>            
+
+            <%else%>
+
+            <div class="item">
+              <%=image_tag image.url%>
+              <div class="carousel-caption">
+                <h4>
+                  <%=image.title%>
+                </h4>
+                <p>
+                  <%=image.description%>
+                </p>
+              </div>
+            </div>
+            <%end%>
+          <%end%>
+
+        </div> <a class="left carousel-control" href="#carousel-228171" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-228171" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+      </div>
+
+      <div class="tabbable" id="tabs-993353">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#panel-489648" data-toggle="tab">成分表</a>
+          </li>
+          <li class="active">
+            <a href="#panel-202402" data-toggle="tab">付款資訊</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane" id="panel-489648">
+            <pre>
+              【卡龍匯款資訊】
+            ‧  預付訂金50%
+            ‧  匯款銀行：第一商業銀行台東分行(代號007)
+            ‧  匯款帳號：811-50-267597
+            ‧  戶名：馬卡龍
+               匯出訂金後煩請電話告知，並將匯款收據註明匯款人姓名、連絡電話、住宿日期完整填寫，傳真至(089)515709或回函給我們
+            </pre>
+          </div>
+          <div class="tab-pane active" id="panel-202402">
+            <pre>
+            【卡龍匯款資訊】
+            ‧  預付訂金50%
+            ‧  匯款銀行：第一商業銀行台東分行(代號007)
+            ‧  匯款帳號：811-50-267597
+            ‧  戶名：馬卡龍
+               匯出訂金後煩請電話告知，並將匯款收據註明匯款人姓名、連絡電話、住宿日期完整填寫，傳真至(089)515709或回函給我們
+            　  　
+            　 
+            　
+
+            【卡龍郵政劃撥資訊】
+            ‧  需一次付清住宿金額
+            ‧  劃撥戶名：馬卡龍
+            ‧  劃撥帳號：06682820
+               劃撥後煩請電話告知，並將劃撥單收據註明匯款人姓名、連絡電話、住宿日期完整填寫，傳真至(089)515709或回函給我們
+            </pre>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="btn btn-success btn-block" type="button">把我帶回家</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

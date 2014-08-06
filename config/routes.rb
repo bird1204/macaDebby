@@ -58,5 +58,7 @@ MacaDebby::Application.routes.draw do
 
 
   resources :products
+  resources :orders
+  resources :product_image
   root :to => 'homepages#index'
 end
