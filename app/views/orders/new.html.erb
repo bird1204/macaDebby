@@ -6,7 +6,7 @@
         感謝您選購<%=@product.name%>。
       </h3>
       <%=image_tag  @product.product_images.first.url, :class => "img-circle"%>
-      <%= form_for @order, :url => orders_path(:prodcut_id => @product.id), :html => { :class => :form } do |f| -%>
+      <%= form_for @order, :url => orders_path(:product_id => @product.id), :html => { :class => :form } do |f| -%>
         <%= render :partial => "form", :locals => {:f => f} %>
         <%=f.submit "結賬" , :class => "btn btn-success"%>
         <%=f.submit "繼續選購" , :class => "btn btn-default"%>

@@ -13,7 +13,6 @@
               <h3>
                 <%=order.product.name%>
               </h3>
-              <p><%="取消訂單中" if order.status == 9%></p>
               <p>・收件者：<%=order.delivery_name%></p>
               <p>・收件地址：<%=order.delivery_address%></p>
               <p>・收件方式：<%=order.delivery_method%></p>
@@ -24,7 +23,11 @@
               
               <p>
                 <%=link_to "詳細資訊", edit_order_path(order.id), :class => "btn btn-primary"%>
-                <%=link_to "取消訂單", order_path(order.id), :method => :DELETE %>
+                <%if order.status != 9%>
+                  <%=link_to "取消訂單", order_path(order.id), :method => :DELETE %>
+                <%else%>
+                  <font color="red">取消訂單中</font>
+                <%end%>
               </p>
             </div>
           </div>

@@ -24,16 +24,16 @@ class OrdersController < ApplicationController
     order.status = 1  # {1 => "處理中",2 => "已接受",3 => "已發貨", 9 => "申請中" , 9 => "已取消訂單"}
     order.payment = 1
     order.enabled = 1
-    order.sum_price = (product.price * price.discount * 0.01 * order.quantity).round
+    order.sum_price = (product.price * product.discount * 0.01 * order.quantity).round
     order.customer_id = current_customer if current_customer.present?
 
     is_save = order.save!
 
     if params[:commit] == "結賬"
       if is_save
-        redirect_to orders_path, :notice => "訂購成功，請從訂單列表確認訂單" 
+        redirect_to search_orders_path(:order_id => order.id), :notice => "訂購成功，請從訂單列表確認訂單" 
       else
-        redirect_to orders_path, :alert => "訂購失敗"
+        redirect_to search_orders_path(:order_id => order.id), :alert => "訂購失敗"
       end
       
     else
