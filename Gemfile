@@ -7,6 +7,8 @@ gem 'rails', '3.2.14'
 
 gem 'activerecord-sqlserver-adapter'
 gem 'mysql2'
+gem 'devise'
+gem 'bcrypt'
 
 
 # Gems used only for assets and not required

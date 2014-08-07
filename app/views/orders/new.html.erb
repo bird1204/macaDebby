@@ -1,0 +1,49 @@
+<%= render :partial => "/layouts/navBar", :locals => { :tab => "order" } %>
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <h3>
+        感謝您選購<%=@product.name%>。
+      </h3>
+      <%=image_tag  @product.product_images.first.url, :class => "img-circle"%>
+      <%= form_for @order, :url => orders_path(:prodcut_id => @product.id), :html => { :class => :form } do |f| -%>
+        <%=f.hidden_field :product_id, :value => @product.id.to_s%>
+        <div class="form-group">
+          <%=f.label :delivery_name ,"收件者"%>
+          <%=f.text_field :delivery_name , :class => "form-control"%>
+        </div>
+        <div class="form-group">
+          <%=f.label :delivery_address ,"收件地址"%>
+          <%=f.text_field :delivery_address , :class => "form-control"%>
+        </div>
+        <div class="form-group">
+          <%=f.label :delivery_mobile ,"收件電話"%>
+          <%=f.phone_field :delivery_mobile , :class => "form-control"%>
+        </div>
+        <div class="form-group">
+          <%= f.label :delivery_method ,"收件方式"%><p>
+          <%= f.select :delivery_method, @delivery_method.invert%>
+        </div>
+        <div class="form-group">
+          <%=f.label :quantity ,"數量"%>
+          <%=f.number_field :quantity , :in => 1..100 , :class => "form-control" , :onchange => 'sum();'%>
+        </div>
+        <div class="form-group">
+          <%=label_tag :sum_price ,"總價"%>
+          <%=f.number_field :sum_price , :in => 1..100 , :class => "form-control" , :disabled => true%>
+        </div>       
+        <%=f.submit "結賬" , :class => "btn btn-success"%>
+        <%=f.submit "繼續選購" , :class => "btn btn-default"%>
+      <%end%>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  var price = <%=@product.price%>;
+  var discount = <%=@product.discount%> * 0.01;
+  function sum(){
+    var quantity = $("#order_quantity").val();
+    var sum = quantity * price * discount;
+    $("#order_sum_price").val(Math.round(sum));
+  }
+</script>

@@ -1,0 +1,20 @@
+<%= render :partial => "/layouts/navBar", :locals => { :tab => "top" } %>
+
+<h2>註冊</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %></div>
+
+  <div><%= f.label :password ,"密碼"%><br />
+    <%= f.password_field :password, autocomplete: "off" %></div>
+
+  <div><%= f.label :password_confirmation ,"確認密碼" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+  <div><%= f.submit "註冊" , :class => "btn-success"%></div>
+<% end %>
+
+<%= render "devise/shared/links" %>

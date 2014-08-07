@@ -26,6 +26,13 @@
   <div class="row clearfix">
     <div class="col-md-12 column">
       <%=image_tag "./logo.png" , :class => "img-circle"%>
+      
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
 
       <%= yield %>
 
