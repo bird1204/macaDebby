@@ -3,17 +3,18 @@
   <div class="row clearfix">
     <div class="col-md-12 column">
       <h3>
-        感謝您選購<%=@product.name%>。
+        正在修改 <%=@product.name%>。
       </h3>
       <%=image_tag  @product.product_images.first.url, :class => "img-circle"%>
-      <%= form_for @order, :url => orders_path(:prodcut_id => @product.id), :html => { :class => :form } do |f| -%>
+      <%= form_for @order, :url => order_path, :html => { :class => :form } do |f| -%>
         <%= render :partial => "form", :locals => {:f => f} %>
-        <%=f.submit "結賬" , :class => "btn btn-success"%>
-        <%=f.submit "繼續選購" , :class => "btn btn-default"%>
+        <%=f.submit "確認修改" , :class => "btn btn-alert"%>
+        <%=f.submit "取消" , :class => "btn btn-default"%>
       <%end%>
     </div>
   </div>
 </div>
+
 
 
 <script type="text/javascript">
@@ -27,4 +28,5 @@
   }
 
   window.onload=sum();
+
 </script>

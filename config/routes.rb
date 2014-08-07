@@ -61,6 +61,8 @@ MacaDebby::Application.routes.draw do
 
 
   resources :products
-  resources :orders
   resources :product_image
+  resources :orders do
+    get "search",             :on => :collection
+  end
 end

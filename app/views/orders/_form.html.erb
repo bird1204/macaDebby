@@ -1,0 +1,26 @@
+        <%=f.hidden_field :product_id, :value => @product.id.to_s%>
+        <div class="form-group">
+          <%=f.label :delivery_name ,"收件者"%>
+          <%=f.text_field :delivery_name , :class => "form-control"%>
+        </div>
+        <div class="form-group">
+          <%=f.label :delivery_address ,"收件地址"%>
+          <%=f.text_field :delivery_address , :class => "form-control"%>
+        </div>
+        <div class="form-group">
+          <%=f.label :delivery_mobile ,"收件電話"%>
+          <%=f.phone_field :delivery_mobile , :class => "form-control"%>
+        </div>
+        <div class="form-group">
+          <%= f.label :delivery_method ,"收件方式"%><p>
+          <%= f.select :delivery_method, @delivery_method.invert%>
+        </div>
+        <div class="form-group">
+          <%=f.label :quantity ,"數量"%>
+          <%=f.number_field :quantity , :in => 1..999 , :class => "form-control" , :onchange => 'sum();'%>
+        </div>
+        <div class="form-group">
+          <%=label_tag :sum_price ,"總價"%>
+          <%=f.number_field :sum_price, :class => "form-control" , :disabled => true%>
+        </div>    
+
