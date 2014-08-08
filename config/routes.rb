@@ -59,9 +59,13 @@ MacaDebby::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   root :to => 'homepages#index'
 
+
+  resources :customers do
+    get "orders"
+  end
   resources :introduce
   resources :products
-  resources :product_image
+  resources :product_images
   resources :orders do
     get "search",             :on => :collection
   end

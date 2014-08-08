@@ -8,7 +8,7 @@
       <%=image_tag  @product.product_images.first.url, :class => "img-circle"%>
       <%= form_for @order, :url => order_path, :html => { :class => :form } do |f| -%>
         <%= render :partial => "form", :locals => {:f => f} %>
-        <%=f.submit "確認修改" , :class => "btn btn-alert"%>
+        <%=f.submit "確認修改" , :class => "btn btn-success"%>
         <%=f.submit "取消" , :class => "btn btn-default"%>
       <%end%>
     </div>

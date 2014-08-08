@@ -5,7 +5,6 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :name
       t.string :mobile
       t.text :address
-      t.string :Email
       t.boolean :is_member
       t.timestamps
     end

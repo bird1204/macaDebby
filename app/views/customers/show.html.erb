@@ -1,0 +1,44 @@
+<%= render :partial => "/layouts/navBar", :locals => { :tab => "customer" } %>
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="page-header">
+        <h1>
+          我的簡介 <small>我是<%=@name %></small>
+        </h1>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            姓名
+          </h3>
+        </div>
+        <div class="panel-body">
+          <%=@customer.name%>
+        </div>
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            聯絡電話
+          </h3>
+        </div>
+        <div class="panel-body">
+          <%=@customer.mobile%>
+        </div>
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            地址
+          </h3>
+        </div>
+        <div class="panel-body">
+          <%=@customer.address%>
+        </div>
+        <!--
+        <div class="panel-footer">
+          Panel footer
+        </div>
+        -->
+      </div> 
+      <%=link_to "編輯資料", edit_customer_path(@customer.id), :class => "btn btn-primary"%>
+    </div>
+  </div>
+</div>

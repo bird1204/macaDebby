@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration
       t.text :desc
       t.integer :price
       t.integer :discount
-      t.integer :product_image_id
+      t.boolean :is_top
       t.boolean :enabled
       t.timestamps
     end

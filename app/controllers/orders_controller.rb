@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     if current_customer.present?
-      @orders = Order.where(:customer_id => current_customer.id) 
+      @orders = Order.where("id = ? or delivery_mobile = ?", current_customer.mobile, current_customer.mobile) 
     else
       respond_to do |format|
         format.html { render  :action => "warning" } # 指定使用 index 的 tamplate
@@ -31,9 +31,9 @@ class OrdersController < ApplicationController
 
     if params[:commit] == "結賬"
       if is_save
-        redirect_to search_orders_path(:order_id => order.id), :notice => "訂購成功，請從訂單列表確認訂單" 
+        redirect_to search_orders_path(:order_id => order.delivery_mobile), :notice => "訂購成功，請從訂單列表確認訂單" 
       else
-        redirect_to search_orders_path(:order_id => order.id), :alert => "訂購失敗"
+        redirect_to search_orders_path(:order_id => order.delivery_mobile), :alert => "訂購失敗"
       end
       
     else
@@ -49,13 +49,13 @@ class OrdersController < ApplicationController
 
   def update
     message = "取消修改"
+    order=Order.find(params[:id])
     if params[:commit] == "確認修改"
-      order=Order.find(params[:id])
       params[:order][:sum_price] = (order.product.price * order.product.discount * 0.01 * order.quantity).round
       order.update_attributes!(params[:order])
       message = "修改完成"
     end
-    redirect_to search_orders_path(:order_id => params[:id]), :notice => message
+    redirect_to search_orders_path(:order_id => order.delivery_mobile), :notice => message
   end
 
   def destroy
@@ -63,12 +63,11 @@ class OrdersController < ApplicationController
     order.status = 9
     order.save!
 
-    redirect_to search_orders_path(:order_id => params[:id]), :notice => "訂單取消處理中"
+    redirect_to search_orders_path(:order_id => order.delivery_mobile), :notice => "訂單取消處理中"
   end
 
   def search
     @orders=Order.where("id = ? or delivery_mobile = ?", params[:order_id], params[:order_id])
-
     respond_to do |format|
       format.js
       format.html { render :action => "index" } # 指定使用 index 的 tamplate
