@@ -31,6 +31,11 @@ namespace :dev do
         pm.save!
       end
       
+      puts "Create system employee"
+      e = Employee.new(:email => "bird1204@gmail.com", :password => "19911204", :name => "卡龍弟", :enabled => true)
+      e.save!
+
+      
 
   end
 end

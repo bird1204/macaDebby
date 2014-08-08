@@ -1,4 +1,5 @@
 MacaDebby::Application.routes.draw do
+  devise_for :employees
   devise_for :customers
 
   # The priority is based upon order of creation:
@@ -60,7 +61,9 @@ MacaDebby::Application.routes.draw do
   root :to => 'homepages#index'
 
   namespace :admin do
+    root :to => 'homepages#index'
     resources :products
+    resources :homepages
   end
 
 
