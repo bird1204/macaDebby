@@ -9,26 +9,27 @@
 <body>
   <div id="container">
     <div id="header">
-      <h1><a href="/">Web App</a></h1>
-      <div id="user-navigation">
+      <h1><%=link_to "Web App" , admin_root_path%></a></h1>
+       <div id="user-navigation">
+        <%if  current_employee.present?%>
         <ul class="wat-cf">
           <li><a href="#"><%= t("web-app-theme.profile", :default => "Profile") %></a></li>
           <li><a href="#"><%= t("web-app-theme.settings", :default => "Settings") %></a></li>
-          <li><%=button_to t("web-app-theme.logout", :default => "Logout"), destroy_employee_session_path, method: :delete%></a></li>
+          <li><%=button_to t("web-app-theme.logout", :default => "Logout"), destroy_employee_session_path, method: :delete%></li>
         </ul>
+        <%end%>
       </div>
       <div id="main-navigation">
-        <ul class="wat-cf"></ul>
       </div>
+      <%=render :partial => "layouts/admin_navBar"%>
     </div>    
     <div id="wrapper" class="wat-cf">
       <div class="flash">
         <% flash.each do |type, message| -%>
-          <div class="message <%= type %>">
+          <div class="message message-<%= type %>">
             <p><%= message %></p>
           </div>
         <% end -%>
-      </div>
       <div id="main">
         <%= yield %>
         <div id="footer">

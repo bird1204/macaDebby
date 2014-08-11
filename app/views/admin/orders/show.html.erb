@@ -1,0 +1,74 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_orders_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_order_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_order_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.product_id", :default => t("activerecord.labels.product_id", :default => "Product")) %>:</b>
+          <%= @order.product_id %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.customer_id", :default => t("activerecord.labels.customer_id", :default => "Customer")) %>:</b>
+          <%= @order.customer_id %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.quantity", :default => t("activerecord.labels.quantity", :default => "Quantity")) %>:</b>
+          <%= @order.quantity %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.sum_price", :default => t("activerecord.labels.sum_price", :default => "Sum price")) %>:</b>
+          <%= @order.sum_price %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.status", :default => t("activerecord.labels.status", :default => "Status")) %>:</b>
+          <%= @order.status %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.delivery_name", :default => t("activerecord.labels.delivery_name", :default => "Delivery name")) %>:</b>
+          <%= @order.delivery_name %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.delivery_address", :default => t("activerecord.labels.delivery_address", :default => "Delivery address")) %>:</b>
+          <%= @order.delivery_address %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.delivery_method", :default => t("activerecord.labels.delivery_method", :default => "Delivery method")) %>:</b>
+          <%= @order.delivery_method %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.delivery_mobile", :default => t("activerecord.labels.delivery_mobile", :default => "Delivery mobile")) %>:</b>
+          <%= @order.delivery_mobile %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.payment", :default => t("activerecord.labels.payment", :default => "Payment")) %>:</b>
+          <%= @order.payment %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.enabled", :default => t("activerecord.labels.enabled", :default => "Enabled")) %>:</b>
+          <%= @order.enabled %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_order_path(@order), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_order_path(@order), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

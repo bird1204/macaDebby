@@ -32,9 +32,18 @@ namespace :dev do
       end
       
       puts "Create system employee"
-      e = Employee.new(:email => "bird1204@gmail.com", :password => "19911204", :name => "卡龍弟", :enabled => true)
-      e.save!
+      Employee.create(:email => "bb@sogi.com", :password => "19911204", :name => "GOD", :permission_id => 1, :enabled => true)
+      Employee.create(:email => "bird1204@gmail.com", :password => "19911204", :name => "卡龍弟", :permission_id => 2, :enabled => true)
 
+      puts "Create system permission"
+      Permission.create(:type => "employee", :power => 0) #GOD
+      Permission.create(:type => "employee", :power => 1) #HERO
+      Permission.create(:type => "employee", :power => 2) #employee
+      Permission.create(:type => "employee", :power => 3) #intern
+      Permission.create(:type => "customer", :power => 0) #billionaire
+      Permission.create(:type => "customer", :power => 1) #millionaire
+      Permission.create(:type => "customer", :power => 2) #people
+      Permission.create(:type => "customer", :power => 3) #kid   
       
 
   end

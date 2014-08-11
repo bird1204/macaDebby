@@ -62,8 +62,13 @@ MacaDebby::Application.routes.draw do
 
   namespace :admin do
     root :to => 'homepages#index'
-    resources :products
-    resources :homepages
+    resources :product_images
+    resources :orders
+    resources :customers
+    resources :employees
+    resources :products do
+      get "search",             :on => :collection
+    end
   end
 
 

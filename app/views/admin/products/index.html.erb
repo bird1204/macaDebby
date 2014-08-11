@@ -8,13 +8,21 @@
   <div class="content">          
     <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Products</h2>
     <div class="inner">
+      <%= form_tag(search_admin_products_path, :method => :get, :class => :form) do %>
+      <p>
+        <%= app_render_enabled_select("is_enabled", "true") %>
+        <%= text_field_tag :keyword, params[:keyword] %>
+        <%= submit_tag "搜尋", :class => "button" %>
+      </p>
+    <% end %>
       <table class="table">
         <tr>             
           <th class="first">ID</th>
-                    <th>
+          <th>
             <%= t("activerecord.attributes.admin_product.name", :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
-                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th>是否啟用</th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @products.each do |product| -%>
@@ -22,22 +30,26 @@
           <td>
             <%= product.id %>
           </td>
-                    <td>
+          <td>
             <%= link_to product.name, admin_product_path(product) %>
           </td>
-                    <td>
+          <td>
             <%= product.created_at %>
           </td>
+          <td>
+            <%= product.enabled %>
+          </td>
           <td class="last">
-            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_product_path(product) %> |
-            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_product_path(product) %> |
-            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_product_path(product), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_product_path(product.id) %> |
+            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_product_path(product.id) %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_product_path(product.id), :method => :Delete %>
           </td>
         </tr>          
         <% end -%>
       </table>
       <div class="actions-bar wat-cf">
         <div class="actions">
+          <%= will_paginate @products, :class => "pagination" %>
         </div>
         
       </div>

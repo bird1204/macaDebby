@@ -33,6 +33,7 @@ GEM
     arel (3.0.3)
     bcrypt (3.1.7)
     builder (3.0.4)
+    cancan (1.6.10)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -104,13 +105,14 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.40)
+    tzinfo (0.3.41)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
     web-app-theme (0.7.0)
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
@@ -118,6 +120,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-sqlserver-adapter
   bcrypt
+  cancan
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
@@ -126,3 +129,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   web-app-theme
+  will_paginate

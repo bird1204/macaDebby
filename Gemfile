@@ -10,6 +10,8 @@ gem 'mysql2'
 gem 'devise'
 gem 'bcrypt'
 gem "web-app-theme" 
+gem 'will_paginate'
+gem "cancan"
 
 # Gems used only for assets and not required
 # in production environments by default.
