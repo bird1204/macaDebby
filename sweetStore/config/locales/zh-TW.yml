@@ -1,0 +1,23 @@
+zh-TW:
+  activerecord:
+    attributes:
+      spree/order:
+        considered_risky: 風險指數
+  spree:
+    order_approved: 訂單核准
+    button_name_print: "發票.貨運"
+    footer_left1: "footer_left1"
+    footer_left2: "footer_left2"
+    footer_right1: "footer_right1"    
+    footer_right2: "footer_right2"
+    thanks: "thanks"
+    save_my_address: 儲存我的地址
+    taxon_placeholder: 商品分類
+    option_type_placeholder: 商品選項分類
+    find_a_taxon: 尋找taxon
+    choose_location: 選擇地點
+    quick_search: 快速搜尋
+    use_app_default: 預設值
+    paypal:
+      flash:
+        generic_error: 出錯啦
