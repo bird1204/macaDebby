@@ -17,27 +17,24 @@ Spree.config do |config|
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
   # config.logo = 'logo.png'
-  # config.admin_interface_logo = 'logo_small.png'
+  config.admin_interface_logo = 'logo_small.png'
 end
-
 Spree.user_class = "Spree::User"
 # Spree::PrintInvoice::Config.set(logo_path: 'logo.png')
 # Spree::PrintInvoice::Config.set(next_number: ['1'|'your current next invoice number'])
 # Spree::PrintInvoice::Config.set(print_buttons: 'invoice,packaging_slip') # comma separated list
-Spree::PrintInvoice::Config.set(
-  #logo_path: 'logo.png',
-  print_buttons: 'invoice,packaging_slip',
-  page_layout: 'landscape',
-  page_size: 'A4',
-  store_pdf: true,
-  storage_path: 'pdfs/orders',
-  footer_left: 'footer_left',
-  footer_right: 'footer_right',
-  return_message: 'return_message',
-  anomaly_message: 'anomaly_message',
-  use_footer: true,
-  logo_scale: 18
-)
+#   print_buttons: 'invoice,packaging_slip',
+#   page_layout: 'landscape',
+#   page_size: 'A4',
+#   store_pdf: true,
+#   storage_path: 'pdfs/orders',
+#   footer_left: 'footer_left',
+#   footer_right: 'footer_right',
+#   return_message: 'return_message',
+#   anomaly_message: 'anomaly_message',
+#   use_footer: true,
+#   logo_scale: 18
+# )
 # Spree::PrintInvoice::Config.set(store_pdf: true) # Default: false
 # Spree::PrintInvoice::Config.set(storage_path: 'pdfs/orders') # Default: tmp/order_prints
 # Spree::PrintInvoice::Config.set(suppress_anonymous_address: 'suppress_anonymous_address')

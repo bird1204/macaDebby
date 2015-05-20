@@ -6,8 +6,9 @@ define_grid(columns: 5, rows: 8, gutter: 10)
 # HEADER
 repeat(:all) do
   im = Rails.application.assets.find_asset(Spree::PrintInvoice::Config[:logo_path])
+
   if im && File.exist?(im.pathname)
-    image im, vposition: :top, height: 40, scale: Spree::PrintInvoice::Config[:logo_scale]
+    image im, vposition: :top, height: 40, scale: Spree::PrintInvoice::Config[:logo_scale].to_i
   end
 
   grid([0,3], [0,4]).bounding_box do

@@ -50,7 +50,5 @@ module SweetStore
         ENV[key.to_s] = value
       end if File.exists?(env_file)
     end
-
-
   end
 end

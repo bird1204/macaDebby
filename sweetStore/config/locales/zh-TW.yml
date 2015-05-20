@@ -4,6 +4,50 @@ zh-TW:
       spree/order:
         considered_risky: 風險指數
   spree:
+    transaction_id: 交易編號
+    charged: 手續費
+    pre_tax_refund_amount: 稅前退價
+    total_pre_tax_refund: 總稅前退價
+    reimbursement_type: 報銷類型
+    select_a_return_authorization_reason: 選擇核可理由
+    memo: 備注
+    ready: 準備中
+    pending:  等待
+    paid: 已付款
+    address: 下單
+    previous_state_missing: 沒有上次的狀態
+    state_machine_states:
+        order: 訂單
+        payment: 付款方式
+        shipment: 出貨方式
+    print_invoice:
+        via: via(?)
+        settings: 發票設定
+        invoice: 收據
+        payment_via: 付款方式
+        vat: avat(?)
+        page: 頁數
+        of: of(?)
+    returns: 退貨
+    no_resource_found: 找不到資料
+    items_in_rmas: items_in_rmas(?)
+    other_items_in_other: other_items_in_other(?)
+    pre_tax_amount: pre_tax_amount(?)
+    exchange_for: exchange_for(?)
+    resellable: 重新上架
+    select_a_stock_location: 選擇庫存點
+    customer_returns: 顧客回應
+    new_customer_return: 新顧客回應
+    existing_shipments: 存在的出貨方式
+    new_shipment_at_location: 各地的新出貨方式
+    no_tracking_present: 沒有追蹤紀錄
+    line_item_adjustments: 商品的調整(?)
+    shipment_adjustments: 出貨方式調整
+    summary: 總結
+    refund_reasons: 退貨原因
+    reimbursement_types: 我不知道這什麼reimbursement_types
+    return_authorization_reasons: 不知道return_authorization_reasons
+    shipment_details: 出貨明細
     order_approved: 訂單核准
     button_name_print: "發票.貨運"
     footer_left1: "footer_left1"
