@@ -21,6 +21,12 @@ zh-TW:
         payment: 付款方式
         shipment: 出貨方式
     print_invoice:
+        buttons:
+            invoice: 列印收據
+            packaging_slip: 列印出貨單
+        invoice_date: 發票日期
+        invoice_number: 發票編號
+        packaging_slip: 出貨明細
         via: via(?)
         settings: 發票設定
         invoice: 收據

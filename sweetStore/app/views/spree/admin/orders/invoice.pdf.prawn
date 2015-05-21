@@ -3,12 +3,28 @@ define_grid(columns: 5, rows: 8, gutter: 10)
 @font_face = Spree::PrintInvoice::Config[:font_face]
 @font_size = Spree::PrintInvoice::Config[:font_size]
 
+#i18n 
+require 'prawn/layout'
+# I added this line
+font_families.update("fontPRO" => 
+                      { :bold =>  Rails.root.join('public/font/fontPRO.ttf'), 
+                        :normal => Rails.root.join('public/font/fontPRO.ttf'),
+                        :italic => Rails.root.join('public/font/fontPRO.ttf'),
+                        :bold_italic => Rails.root.join('public/font/fontPRO.ttf')
+                      }
+                    )
+
+# And change this line form 'Helvetica' to 'NanumGothic'
+@font_face = "fontPRO"
+
+
+
 # HEADER
 repeat(:all) do
   im = Rails.application.assets.find_asset(Spree::PrintInvoice::Config[:logo_path])
 
   if im && File.exist?(im.pathname)
-    image im, vposition: :top, height: 40, scale: Spree::PrintInvoice::Config[:logo_scale]
+    image im.filename, vposition: :top, height: 40, scale: Spree::PrintInvoice::Config[:logo_scale].to_i
   end
 
   grid([0,3], [0,4]).bounding_box do
