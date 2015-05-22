@@ -4,6 +4,9 @@ zh-TW:
       spree/order:
         considered_risky: 風險指數
   spree:
+    confirm_email:
+        total: 總計
+        subtotal: 小計
     transaction_id: 交易編號
     charged: 手續費
     pre_tax_refund_amount: 稅前退價

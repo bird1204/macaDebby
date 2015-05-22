@@ -1,0 +1,280 @@
+
+<%= stylesheet_link_tag "email"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width"/>
+</head>
+<body>
+  <table class="body">
+    <tr>
+      <td class="center" align="center" valign="top">
+        <center>
+
+
+          <table class="row header">
+            <tr>
+              <td class="center" align="center">
+                <center>
+
+                  <table class="container">
+                    <tr>
+                      <td class="wrapper last">
+
+                        <table class="twelve columns">
+                          <tr>
+
+                            <td class="six sub-columns">
+                              <img src="http://placehold.it/200x50">
+                            </td>
+                            <td class="six sub-columns last" align="right" style="text-align:right; vertical-align:middle;">
+                              <span class="template-label">HERO</span>
+                            </td>
+                            <td class="expander"></td>
+
+                          </tr>
+                        </table>
+
+                      </td>
+                    </tr>
+                  </table>
+
+                </center>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table class="container">
+            <tr>
+              <td>
+
+                <!-- content start -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper last">
+
+                      <table class="twelve columns">
+                        <tr>
+                          <td>
+
+                            <h1>嗨～ <%=@order.email%></h1>
+                            <p class="lead">我是甜塔小天使，甜塔的孩子們已經收到你的訂單，並開始工作囉～再過幾天就可以品嚐到最溫暖的甜塔小點心啦！</p>
+                            <img width="580" height="300" src="http://placehold.it/580x300">
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+
+                <table class="row callout">
+                  <tr>
+                    <td class="wrapper last">
+
+                      <table class="twelve columns">
+                        <tr>
+                          <td class="panel">
+
+                            <p>想知道最新的甜塔秘密嗎！！！<a href="#">Click it! »</a></p>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+
+                <table class="row">
+                  <tr>
+                    <td class="wrapper last">
+
+                      <table class="twelve columns">
+                        <tr>
+                          <td>
+
+                            <h3><%= Spree.t('order_mailer.confirm_email.order_summary') %>
+                              <small><%= Spree.t('order_mailer.confirm_email.instructions') %></small>
+                            </h3>
+                            <table>
+                              <tr>
+                                <td>
+                                  <table>
+                                    <% @order.line_items.each do |item| %>
+                                      <tr>
+                                        <td><%= item.variant.sku %></td>
+                                        <td>
+                                          <%= raw(item.variant.product.name) %>
+                                          <%= raw(item.variant.options_text) -%>
+                                        </td>
+                                        <td>(<%=item.quantity%>) @ <%= item.single_money %> = <%= item.display_amount %></td>
+                                      </tr>
+                                    <% end %>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        <%= Spree.t('order_mailer.confirm_email.subtotal') %>
+                                      </td>
+                                      <td>
+                                        <%= @order.display_item_total %>
+                                      </td>
+                                    </tr>
+                                    <% if @order.line_item_adjustments.exists? %>
+                                      <% if @order.all_adjustments.promotion.eligible.exists? %>
+                                        <% @order.all_adjustments.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
+                                          <tr>
+                                            <td></td>
+                                            <td><%= Spree.t(:promotion) %> <%= label %>:</td>
+                                            <td><%= Spree::Money.new(adjustments.sum(&:amount), currency: @order.currency) %></td>
+                                          </tr>
+                                        <% end %>
+                                      <% end %>
+                                    <% end %>
+                                    <% @order.shipments.group_by { |s| s.selected_shipping_rate.try(:name) }.each do |name, shipments| %>
+                                      <tr>
+                                        <td></td>
+                                        <td><%= Spree.t(:shipping) %> <%= name %>:</td>
+                                        <td><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: @order.currency) %></td>
+                                      </tr>
+                                    <% end %>
+                                    <% if @order.all_adjustments.eligible.tax.exists? %>
+                                      <% @order.all_adjustments.eligible.tax.group_by(&:label).each do |label, adjustments| %>
+                                        <tr>
+                                          <td></td>
+                                          <td><%= Spree.t(:tax) %> <%= label %>:</td>
+                                          <td><%= Spree::Money.new(adjustments.sum(&:amount), currency: @order.currency) %></td>
+                                        </tr>
+                                      <% end %>
+                                    <% end %>
+                                    <% @order.adjustments.eligible.each do |adjustment| %>
+                                      <% next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount == 0) %>
+                                      <tr>
+                                        <td></td>
+                                        <td><%= adjustment.label %>:</td>
+                                        <td><%= adjustment.display_amount %></td>
+                                      </tr>
+                                    <% end %>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        <%= Spree.t('order_mailer.confirm_email.total') %>
+                                      </td>
+                                      <td>
+                                        <%= @order.display_total %>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                  <p>
+                                    <%= Spree.t('order_mailer.confirm_email.thanks') %>
+                                  </p>
+                                </td>
+                                <td class="expander"></td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+
+
+                <table class="row">
+                  <tr>
+                    <td class="wrapper last">
+
+                      <table class="three columns">
+                        <tr>
+                          <td>
+
+                            <table class="button">
+                              <tr>
+                                <td>
+                                  <a href="#">點我啊廢</a>
+                                </td>
+                              </tr>
+                            </table>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+
+
+                <table class="row footer">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="left-text-pad">
+
+                            <h5>我們的社群</h5>
+
+                            <table class="tiny-button facebook">
+                              <tr>
+                                <td>
+                                  <a href="https://www.facebook.com/1991sweety?fref=ts">Facebook</a>
+                                </td>
+                              </tr>
+                            </table>
+
+                            <br>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="last right-text-pad">
+                            <h5>聯絡資訊</h5>
+                            <p>電話: 0922-300-906</p>
+                            <p>Email: <a href="mailto:bird1204@gmail.com">bird1204@gmail.com</a></p>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- container end below -->
+              </td>
+            </tr>
+          </table>
+
+        </center>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

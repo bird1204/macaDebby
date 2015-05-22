@@ -2,6 +2,7 @@ Deface::Override.new(:virtual_path => 'spree/shared/_header',
                       :name => 'change header text',
                       :replace => 'div#spree-header',
                       :text => "
+
     <div class='navbar navbar-default navbar-fixed-top'>
           <div id='main-nav-bar' class='navbar'>
             <ul class='nav navbar-nav navbar-right' data-hook>
@@ -18,7 +19,9 @@ Deface::Override.new(:virtual_path => 'spree/shared/_header',
             </ul>
           </div>    
     </div>
-    <br><br><br><br><br><br>
+    <div class='clear'></div>
+    <div class='.border3'></div>
+    <br><br><br>
     <div class='container'>
       <header>
         <hgroup class='intro'>
@@ -34,6 +37,7 @@ Deface::Override.new(:virtual_path => 'spree/shared/_header',
         </div>
       </header>
     </div>
+    <BR><BR><BR>
     "
 
                     )
