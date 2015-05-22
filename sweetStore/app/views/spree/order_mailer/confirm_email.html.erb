@@ -28,7 +28,8 @@
                           <tr>
 
                             <td class="six sub-columns">
-                              <img src="http://placehold.it/200x50">
+                              <%=image_tag("https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xtf1/v/t1.0-9/11008824_1630369500518166_2609914371207888613_n.jpg?oh=855aacf97f9b6dcb19c11bba72d56267&oe=55BF5F7D&__gda__=1438801621_db847c7b397149e2e246ab41ae6df8fb")%>
+                               <!--http://placehold.it/200x50-->
                             </td>
                             <td class="six sub-columns last" align="right" style="text-align:right; vertical-align:middle;">
                               <span class="template-label">HERO</span>
@@ -63,8 +64,8 @@
 
                             <h1>嗨～ <%=@order.email%></h1>
                             <p class="lead">我是甜塔小天使，甜塔的孩子們已經收到你的訂單，並開始工作囉～再過幾天就可以品嚐到最溫暖的甜塔小點心啦！</p>
-                            <img width="580" height="300" src="http://placehold.it/580x300">
-
+                            <%=image_tag("https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xat1/v/t1.0-9/11133685_1626042804284169_2718707716709759557_n.jpg?oh=dbb4d816346d7f1f33b694dd1acd790a&oe=560A4710&__gda__=1442536472_3d665da7fb7c5e5f7df1bbf82f3e0100")%> 
+                            <!--http://placehold.it/580x300-->
                           </td>
                           <td class="expander"></td>
                         </tr>
@@ -82,7 +83,7 @@
                         <tr>
                           <td class="panel">
 
-                            <p>想知道最新的甜塔秘密嗎！！！<a href="#">Click it! »</a></p>
+                            <p>想知道最新的甜塔秘密嗎！！！<%=link_to("點我",root_url+root_path)%></p>
 
                           </td>
                           <td class="expander"></td>
